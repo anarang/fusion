@@ -1,4 +1,6 @@
 #Test scripts for sample app
+#Only for reference, the test scripts are based on demo app.
+
 Sample Test scripts for:
 -To verify if the search results match the exact query string
 -To verify if filter works correctly

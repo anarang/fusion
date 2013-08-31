@@ -8,13 +8,15 @@ from ConfigParser import ConfigParser
 conf_file = open('config.conf')
 config = ConfigParser()
 config.readfp(conf_file)
-logs_path = config.get("set_logs_path",'log_folder')
-FORMAT = '%(asctime)-15s %(levelname)s %(message)s'
-import logging
-if not os.path.exists(logs_path):
-        os.makedirs(logs_path)
-        open(os.path.join(logs_path,"log_file_%s.log"%datetime.date.today()),'a').close()
-        logging.basicConfig(filename=os.path.join(logs_path,"log_file_%s.log"%datetime.date.today()),format=FORMAT, filemode='a', level=logging.INFO)
+# in order to create a log file for your code, you can comment out the
+# following code and use logging as per your requirement
+#logs_path = config.get("set_logs_path",'log_folder')
+#FORMAT = '%(asctime)-15s %(levelname)s %(message)s'
+#import logging
+#if not os.path.exists(logs_path):
+#        os.makedirs(logs_path)
+#        open(os.path.join(logs_path,"log_file_%s.log"%datetime.date.today()),'a').close()
+#        logging.basicConfig(filename=os.path.join(logs_path,"log_file_%s.log"%datetime.date.today()),format=FORMAT, filemode='a', level=logging.INFO)
 
 
 class Filter(unittest.TestCase):
@@ -27,7 +29,6 @@ class Filter(unittest.TestCase):
         label1.click()
         label1_text = label1.text
         print "Label selected for filter: ", label1_text
-        logging.info("hello")
         time.sleep(2)
         element = driver.find_elements_by_class_name("title")
         element_text = [x.text for x in element]
